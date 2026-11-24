@@ -19,15 +19,15 @@ export default function HomePage() {
       {/* 1. Hero: add public/images/hero.jpg to show a real photo behind the drawing */}
       <section className="relative isolate overflow-hidden bg-navy-900">
         <div className="absolute inset-0 -z-10 bg-[url('/images/hero.jpg')] bg-cover bg-center opacity-25" />
-        <div className="container-x grid items-center gap-12 py-16 md:grid-cols-2 md:py-24">
+        <div className="container-x grid items-center gap-10 py-12 sm:py-16 lg:grid-cols-2 lg:gap-12 lg:py-24">
           <div>
             <h1 className="text-ivory">
               تولید قطعات لاستیکی صنعتی از سال <CountUp to={site.sinceYear} from={1300} duration={2400} />
             </h1>
-            <p className="mt-6 max-w-xl text-lg text-navy-100">{site.tagline}.</p>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Button href="/products" variant="bronze">مشاهده‌ی محصولات</Button>
-              <Button href="/contact" variant="ghost">درخواست مشاوره</Button>
+            <p className="mt-5 max-w-xl text-base text-navy-100 md:text-lg">{site.tagline}.</p>
+            <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4">
+              <Button href="/products" variant="bronze" className="w-full sm:w-auto">مشاهده‌ی محصولات</Button>
+              <Button href="/contact" variant="ghost" className="w-full sm:w-auto">درخواست مشاوره</Button>
             </div>
             <ul className="mt-10 flex flex-wrap gap-3">
               {certificates.map((c) => (
@@ -37,7 +37,7 @@ export default function HomePage() {
               ))}
             </ul>
           </div>
-          <GasketMark className="mx-auto w-full max-w-md" />
+          <GasketMark className="mx-auto w-full max-w-[15rem] sm:max-w-xs lg:max-w-md" />
         </div>
       </section>
 
@@ -63,9 +63,9 @@ export default function HomePage() {
 
       {/* 5. Why us */}
       <section className="container-x py-16 md:py-24">
-        <div className="grid gap-12 md:grid-cols-3">
-          <h2 className="md:pe-8">چرا کبیر لاستیک وارنا</h2>
-          <div className="md:col-span-2">
+        <div className="grid gap-10 lg:grid-cols-3 lg:gap-12">
+          <h2 className="lg:pe-8">چرا کبیر لاستیک وارنا</h2>
+          <div className="lg:col-span-2">
             <Features />
           </div>
         </div>
@@ -74,12 +74,12 @@ export default function HomePage() {
       {/* 6. Mission */}
       <section className="bg-bronze-100 py-16 md:py-24">
         <div className="container-x grid items-end gap-8 md:grid-cols-2">
-          <p className="text-4xl font-extrabold leading-snug text-navy-900 md:text-6xl">ما کیفیت را می‌سازیم</p>
+          <p className="text-4xl font-extrabold leading-snug text-navy-900 sm:text-5xl lg:text-6xl">ما کیفیت را می‌سازیم</p>
           <div>
             <p className="max-w-lg text-lg text-navy-900/80">
               با تخصص، علم و فن‌آوری به‌روز، خواسته‌های کارخانجات و شرکت‌ها را برآورده می‌کنیم تا مصرف‌کنندگان به کالاهای صنعتی با بالاترین کیفیت دست پیدا کنند.
             </p>
-            <Button href="/about" className="mt-6">درباره‌ی ما</Button>
+            <Button href="/about" className="mt-6 w-full sm:w-auto">درباره‌ی ما</Button>
           </div>
         </div>
       </section>
@@ -95,8 +95,8 @@ export default function HomePage() {
 
       {/* 9. Quote request + contact */}
       <section id="quote" className="bg-navy-900 py-16 md:py-24">
-        <div className="container-x grid gap-12 md:grid-cols-5">
-          <div className="md:col-span-2">
+        <div className="container-x grid gap-10 lg:grid-cols-5 lg:gap-12">
+          <div className="lg:col-span-2">
             <h2 className="text-ivory">درخواست استعلام و مشاوره</h2>
             <p className="mt-4 text-navy-100">
               نام محصول یا خودرو و توضیح کوتاهی بنویسید. یا مستقیم تماس بگیرید:
@@ -107,7 +107,7 @@ export default function HomePage() {
               <li><a href={`mailto:${site.email}`} className={link} dir="ltr">{site.email}</a></li>
             </ul>
           </div>
-          <div className="md:col-span-3">
+          <div className="lg:col-span-3">
             <QuoteForm tone="dark" />
           </div>
         </div>

@@ -18,10 +18,10 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-stone bg-ivory/95 backdrop-blur">
-      <div className="container-x flex h-24 items-center justify-between gap-8 md:h-28">
+      <div className="container-x flex h-16 items-center justify-between gap-4 sm:h-20 lg:h-24 lg:gap-8 xl:h-28">
         <Logo />
 
-        <nav className="hidden items-center gap-8 md:flex" aria-label="ناوبری اصلی">
+        <nav className="hidden items-center gap-8 lg:flex" aria-label="ناوبری اصلی">
           {nav.map((item) => (
             <Link key={item.href} href={item.href} className={linkClass(item.href)}>
               {item.label}
@@ -29,13 +29,13 @@ export default function Header() {
           ))}
         </nav>
 
-        <Button href="/contact" className="hidden md:inline-flex">
+        <Button href="/contact" className="hidden lg:inline-flex">
           درخواست مشاوره
         </Button>
 
         <button
           type="button"
-          className="p-2 text-navy-900 md:hidden"
+          className="p-2 text-navy-900 lg:hidden"
           aria-label={open ? "بستن منو" : "باز کردن منو"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
@@ -47,7 +47,7 @@ export default function Header() {
       </div>
 
       {open && (
-        <nav className="container-x flex flex-col gap-1 border-t border-stone pb-5 pt-3 md:hidden" aria-label="منوی موبایل">
+        <nav className="container-x flex flex-col gap-1 border-t border-stone pb-5 pt-3 lg:hidden" aria-label="منوی موبایل">
           {nav.map((item) => (
             <Link
               key={item.href}
@@ -58,7 +58,7 @@ export default function Header() {
               {item.label}
             </Link>
           ))}
-          <Button href="/contact" className="mt-3">
+          <Button href="/contact" className="mt-3 w-full">
             درخواست مشاوره
           </Button>
         </nav>

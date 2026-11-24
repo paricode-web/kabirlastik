@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
    logo-bilingual-dark.svg   -> on navy backgrounds */
 export default function Logo({
   variant = "light",
-  className = "h-16 md:h-20",
+  className = "h-10 sm:h-12 md:h-14 lg:h-16 xl:h-20",
 }: {
   variant?: "light" | "dark";
   className?: string;

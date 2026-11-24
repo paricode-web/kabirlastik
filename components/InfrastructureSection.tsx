@@ -44,14 +44,14 @@ export default function InfrastructureSection({
   const [main, second] = photos;
 
   return (
-    <section aria-labelledby="infrastructure-heading" className="bg-navy-900 py-20 md:py-32">
+    <section aria-labelledby="infrastructure-heading" className="bg-navy-900 py-16 md:py-24 lg:py-32">
       <div className="container-x grid items-center gap-16 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <SectionEyebrow tone="dark">{eyebrow}</SectionEyebrow>
-          <h2 id="infrastructure-heading" className="mt-6 text-4xl leading-tight text-ivory md:text-5xl">
+          <h2 id="infrastructure-heading" className="mt-5 text-3xl leading-tight text-ivory sm:text-4xl lg:text-5xl">
             {heading}
           </h2>
-          <p className="mt-6 max-w-md text-lg text-navy-100">{description}</p>
+          <p className="mt-5 max-w-md text-base text-navy-100 md:text-lg">{description}</p>
           <div aria-hidden="true" className="mt-10 h-px w-24 bg-bronze-500" />
         </div>
 

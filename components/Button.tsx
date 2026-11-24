@@ -24,7 +24,7 @@ export default function Button({
   return (
     <Link
       href={href}
-      className={`inline-flex h-12 items-center justify-center rounded px-6 font-bold transition-colors ${styles[variant]} ${className}`}
+      className={`inline-flex h-11 items-center justify-center rounded px-5 text-sm font-bold transition-colors sm:h-12 sm:px-6 sm:text-base ${styles[variant]} ${className}`}
     >
       {children}
     </Link>

@@ -12,6 +12,9 @@ type Props = {
   documents?: CertificateDoc[];
 };
 
+/* Section background. Alternatives from the palette: "bg-stone", "bg-bronze-100", "bg-navy-900" (then switch text colors). */
+const sectionBg = "bg-navy-100";
+
 const archivedNote =
   "اعتبار این سند در تاریخ پایان‌یافته‌ی ثبت‌شده به پایان رسیده است. تا زمان تأیید تمدید، به‌عنوان سند بایگانی نمایش داده می‌شود.";
 
@@ -65,15 +68,15 @@ export default function QualityDocuments({
   const archived = doc.status === "archived";
 
   return (
-    <section id="quality" aria-labelledby={`${uid}-heading`} className="bg-ivory py-20 md:py-32">
+    <section id="quality" aria-labelledby={`${uid}-heading`} className={`${sectionBg} py-16 md:py-24 lg:py-32`}>
       <div className="container-x grid gap-14 lg:grid-cols-12 lg:gap-16">
         {/* text side */}
         <div className="lg:col-span-5">
-          <SectionEyebrow>{eyebrow}</SectionEyebrow>
-          <h2 id={`${uid}-heading`} className="mt-6 text-4xl leading-tight md:text-5xl">
+          <SectionEyebrow tone="navy">{eyebrow}</SectionEyebrow>
+          <h2 id={`${uid}-heading`} className="mt-5 text-3xl leading-tight sm:text-4xl lg:text-5xl">
             {heading}
           </h2>
-          <p className="mt-6 max-w-md text-lg text-navy-700">{description}</p>
+          <p className="mt-5 max-w-md text-base text-navy-700 md:text-lg">{description}</p>
 
           <div
             role="tablist"
@@ -97,13 +100,13 @@ export default function QualityDocuments({
                   tabIndex={selected ? 0 : -1}
                   onClick={() => setIndex(i)}
                   onKeyDown={onTabKeyDown}
-                  className={`flex w-full items-center justify-between gap-4 border-b border-navy-900/15 py-4 text-start transition-colors ${
+                  className={`flex w-full items-center justify-between gap-4 border-b border-navy-900/15 py-3.5 text-start transition-colors md:py-4 ${
                     selected ? "text-navy-900" : "text-navy-700 hover:text-navy-900"
                   }`}
                 >
                   <span className="flex items-center gap-4">
                     <span aria-hidden="true" className={`h-6 w-0.5 ${selected ? "bg-bronze-500" : "bg-transparent"}`} />
-                    <bdi className="text-lg font-extrabold">{d.standard}</bdi>
+                    <bdi className="text-base font-extrabold md:text-lg">{d.standard}</bdi>
                   </span>
                   <bdi className="text-sm">{d.issuerShort}</bdi>
                 </button>
@@ -115,14 +118,14 @@ export default function QualityDocuments({
             <h3 className="text-xl">{doc.title}</h3>
             {archived && (
               <>
-                <p className="mt-4 inline-block border border-bronze-500/60 px-3 py-1 text-sm font-bold text-bronze-600">
+                <p className="mt-4 inline-block border border-bronze-500 px-3 py-1 text-sm font-bold text-navy-900">
                   نسخه‌ی بایگانی‌شده
                 </p>
                 <p className="mt-3 max-w-md text-sm text-navy-700">{archivedNote}</p>
               </>
             )}
 
-            <dl className="mt-6 grid grid-cols-[auto_1fr] gap-x-8 gap-y-3 border-t border-navy-900/15 pt-6 text-sm">
+            <dl className="mt-6 grid grid-cols-[auto_1fr] gap-x-5 gap-y-3 sm:gap-x-8 border-t border-navy-900/15 pt-6 text-sm">
               <dt className="text-navy-700">صادرکننده</dt>
               <dd className="font-bold text-navy-900">
                 <bdi>{doc.issuer}</bdi>
@@ -155,7 +158,7 @@ export default function QualityDocuments({
 
         {/* document side */}
         <div className="lg:col-span-7">
-          <div className="relative border border-stone bg-white p-4 shadow-[0_24px_48px_-28px_rgb(15_36_56/0.28)] md:p-8">
+          <div className="relative border border-navy-900/10 bg-white p-3 shadow-[0_24px_48px_-28px_rgb(15_36_56/0.28)] sm:p-5 lg:p-8">
             <span aria-hidden="true" className="absolute -top-px start-8 h-0.5 w-16 bg-bronze-500" />
 
             <button
@@ -172,19 +175,19 @@ export default function QualityDocuments({
                 height={doc.image.height}
                 alt={doc.image.alt}
                 sizes="(min-width: 1024px) 34rem, 90vw"
-                className="h-auto w-full border border-stone"
+                className="h-auto w-full border border-navy-900/10"
               />
             </button>
 
-            <div className="mx-auto mt-5 flex max-w-[34rem] items-center justify-between gap-4 border-t border-stone pt-4 text-sm">
-              <button type="button" onClick={openDialog} className="flex items-center gap-2 font-bold text-navy-900 hover:text-bronze-600">
+            <div className="mx-auto mt-5 flex max-w-[34rem] items-center justify-between gap-4 border-t border-navy-900/10 pt-3 text-sm sm:pt-4">
+              <button type="button" onClick={openDialog} className="flex items-center gap-2 py-2 font-bold text-navy-900 hover:text-bronze-600">
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">
                   <circle cx="7.5" cy="7.5" r="5" />
                   <path d="M11.5 11.5L16 16M7.5 5.5v4M5.5 7.5h4" />
                 </svg>
                 بزرگ‌نمایی سند
               </button>
-              <a href={doc.image.src} download className="text-navy-700 underline-offset-4 hover:text-bronze-600 hover:underline">
+              <a href={doc.image.src} download className="py-2 text-navy-700 underline-offset-4 hover:text-bronze-600 hover:underline">
                 دانلود تصویر
               </a>
             </div>
@@ -201,7 +204,7 @@ export default function QualityDocuments({
         }}
         className="m-auto max-h-[94vh] w-[min(96vw,60rem)] overflow-hidden bg-navy-900 p-0 text-ivory backdrop:bg-graphite/85"
       >
-        <div className="flex items-center justify-between gap-4 border-b border-ivory/15 px-5 py-3 text-sm">
+        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-b border-ivory/15 px-4 py-3 text-sm sm:px-5">
           <p>
             <bdi>{doc.standard}</bdi> · {doc.title}
           </p>
@@ -209,7 +212,7 @@ export default function QualityDocuments({
             <a href={doc.image.src} target="_blank" rel="noopener" className="hover:text-bronze-300">
               باز کردن در تب جدید
             </a>
-            <button type="button" onClick={closeDialog} className="font-bold hover:text-bronze-300">
+            <button type="button" onClick={closeDialog} className="px-2 py-1 font-bold hover:text-bronze-300">
               بستن
             </button>
           </div>

@@ -12,7 +12,7 @@ function Row() {
   return (
     <div className="flex shrink-0 items-center gap-8 pe-8">
       {marqueeWords.map((w) => (
-        <span key={w} className="flex items-center gap-8 whitespace-nowrap text-lg font-bold text-ivory/90">
+        <span key={w} className="flex items-center gap-8 whitespace-nowrap text-base font-bold md:text-lg text-ivory/90">
           {w}
           <Ring />
         </span>
@@ -23,7 +23,7 @@ function Row() {
 
 export default function Marquee() {
   return (
-    <div className="marquee overflow-hidden border-y border-bronze-500/30 bg-navy-700 py-4" aria-hidden="true">
+    <div className="marquee overflow-hidden border-y border-bronze-500/30 bg-navy-700 py-3 md:py-4" aria-hidden="true">
       <div className="marquee-track flex w-max">
         <Row />
         <Row />
