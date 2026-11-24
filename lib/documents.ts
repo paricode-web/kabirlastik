@@ -1,7 +1,11 @@
 /* Quality documents shown in <QualityDocuments />.
    Every value below is copied from what is printed on the document itself.
    When a renewed certificate is confirmed: add it as a new entry with
-   status: "valid" and its new image, or change status here. */
+   status: "valid" and its new image, or change status here.
+
+   Image paths: files live in /public/brand, and in code the path starts
+   at "/brand/..." (never "/public/..."). Letter case and extension must
+   match the real file name exactly. */
 
 export type CertificateDoc = {
   id: string;
@@ -33,7 +37,7 @@ export const certificateDocs: CertificateDoc[] = [
     ],
     status: "archived",
     image: {
-      src: "/images/certificates/dqs-iso-9001.jpg",
+      src: "/brand/b.jpg",
       width: 1654,
       height: 2338,
       alt: "گواهینامه‌ی ISO 9001:2015 صادرشده توسط DQS GmbH برای Kabir Lastic Varna",
@@ -54,7 +58,8 @@ export const certificateDocs: CertificateDoc[] = [
     ],
     status: "archived",
     image: {
-      src: "/images/certificates/iqnet-iso-9001.jpg",
+      // TODO: use a higher-resolution scan (>= 1600px wide) and update width/height to match
+      src: "/brand/iqnet-iso-9001.jpg",
       width: 600,
       height: 848,
       alt: "گواهینامه‌ی ISO 9001:2015 با شناسایی IQNET برای Kabir Lastic Varna",
@@ -77,7 +82,7 @@ export const certificateDocs: CertificateDoc[] = [
     ],
     status: "archived",
     image: {
-      src: "/images/certificates/qal-iso-10002.jpg",
+      src: "/brand/qal-iso-10002.jpg",
       width: 1718,
       height: 2560,
       alt: "گواهینامه‌ی ISO 10002:2018 صادرشده توسط Quality Assessment Lia برای Kabir Lastik Varna Co.",

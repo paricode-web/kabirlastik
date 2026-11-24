@@ -168,12 +168,15 @@ export default function QualityDocuments({
               aria-label={`بزرگ‌نمایی گواهینامه ${doc.standard} (${doc.issuerShort})`}
               className="mx-auto block w-full max-w-[34rem] cursor-zoom-in"
             >
+              {/* unoptimized: the original file is served as-is (no resizing/compression), so small text stays sharp */}
               <Image
                 key={doc.id}
                 src={doc.image.src}
                 width={doc.image.width}
                 height={doc.image.height}
                 alt={doc.image.alt}
+                unoptimized
+                priority
                 sizes="(min-width: 1024px) 34rem, 90vw"
                 className="h-auto w-full border border-navy-900/10"
               />
@@ -202,7 +205,7 @@ export default function QualityDocuments({
         onClick={(e) => {
           if (e.target === e.currentTarget) closeDialog();
         }}
-        className="m-auto max-h-[94vh] w-[min(96vw,60rem)] overflow-hidden bg-navy-900 p-0 text-ivory backdrop:bg-graphite/85"
+        className="m-auto max-h-[94vh] w-[min(96vw,72rem)] overflow-hidden bg-navy-900 p-0 text-ivory backdrop:bg-graphite/85"
       >
         <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-b border-ivory/15 px-4 py-3 text-sm sm:px-5">
           <p>
@@ -218,14 +221,16 @@ export default function QualityDocuments({
           </div>
         </div>
         <div className="max-h-[calc(94vh-3.5rem)] overflow-auto bg-stone p-3 md:p-6">
+          {/* plain <img> with the original file: full resolution when zoomed. Uses the selected document's own image. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
+            key={doc.id}
             src={doc.image.src}
             alt={doc.image.alt}
             width={doc.image.width}
             height={doc.image.height}
-            loading="lazy"
-            className="mx-auto h-auto w-full max-w-[52rem] bg-white"
+            decoding="async"
+            className="mx-auto h-auto w-full max-w-[64rem] bg-white"
           />
         </div>
       </dialog>

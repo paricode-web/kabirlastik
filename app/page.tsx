@@ -10,39 +10,68 @@ import NewsBanner from "@/components/NewsBanner";
 import QuoteForm from "@/components/QuoteForm";
 import CountUp from "@/components/CountUp";
 import { certificates, site } from "@/lib/site";
-
+import Image from "next/image";
 const link = "transition-colors hover:text-bronze-300";
 
 export default function HomePage() {
   return (
     <>
-      {/* 1. Hero: add public/images/hero.jpg to show a real photo behind the drawing */}
-      <section className="relative isolate overflow-hidden bg-navy-900">
-        <div className="absolute inset-0 -z-10 bg-[url('/images/hero.jpg')] bg-cover bg-center opacity-25" />
-        <div className="container-x grid items-center gap-10 py-12 sm:py-16 lg:grid-cols-2 lg:gap-12 lg:py-24">
-          <div>
-            <h1 className="text-ivory">
-              تولید قطعات لاستیکی صنعتی از سال <CountUp to={site.sinceYear} from={1300} duration={2400} />
-            </h1>
-            <p className="mt-5 max-w-xl text-base text-navy-100 md:text-lg">{site.tagline}.</p>
-            <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4">
-              <Button href="/products" variant="bronze" className="w-full sm:w-auto">مشاهده‌ی محصولات</Button>
-              <Button href="/contact" variant="ghost" className="w-full sm:w-auto">درخواست مشاوره</Button>
-            </div>
-            <ul className="mt-10 flex flex-wrap gap-3">
-              {certificates.map((c) => (
-                <li key={c.code} dir="ltr" className="rounded-full border border-ivory/25 px-3 py-1 text-sm text-navy-100">
-                  {c.code}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <GasketMark className="mx-auto w-full max-w-[15rem] sm:max-w-xs lg:max-w-md" />
-        </div>
-      </section>
+<section className="relative isolate overflow-hidden bg-navy-900">
+  {/* Hero background image */}
+ <Image
+  src="/brand/Hero.png"
+  alt="محیط صنعتی تولید قطعات لاستیکی"
+  fill
+  priority
+  quality={90}
+  sizes="100vw"
+  className="object-cover object-center"
+/>
+
+  {/* Dark overlay */}
+  {/* overlay سبک‌تر */}
+<div className="absolute inset-0 bg-navy-900/30" />
+<div className="absolute inset-0 bg-gradient-to-l from-navy-900/80 via-navy-900/40 to-transparent" />
+
+  <div className="container-x relative z-10 grid items-center gap-10 py-12 sm:py-16 lg:grid-cols-2 lg:gap-12 lg:py-24">
+    <div>
+      <h1 className="text-ivory">
+        تولید قطعات لاستیکی صنعتی از سال{" "}
+        <CountUp to={site.sinceYear} from={1300} duration={2400} />
+      </h1>
+
+      <p className="mt-5 max-w-xl text-base text-navy-100 md:text-lg">
+        {site.tagline}.
+      </p>
+
+      <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4">
+        <Button href="/products" variant="bronze" className="w-full sm:w-auto">
+          مشاهده‌ی محصولات
+        </Button>
+        <Button href="/contact" variant="ghost" className="w-full sm:w-auto">
+          درخواست مشاوره
+        </Button>
+      </div>
+
+      <ul className="mt-10 flex flex-wrap gap-3">
+        {certificates.map((c) => (
+          <li
+            key={c.code}
+            dir="ltr"
+            className="rounded-full border border-ivory/25 px-3 py-1 text-sm text-navy-100"
+          >
+            {c.code}
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <GasketMark className="mx-auto w-full max-w-[15rem] sm:max-w-xs lg:max-w-md" />
+  </div>
+</section>
 
       {/* 2. Product keywords strip */}
-      <Marquee />
+  
 
       {/* 3. Product categories */}
       <section id="categories" className="container-x py-16 md:py-24">
@@ -72,18 +101,7 @@ export default function HomePage() {
       </section>
 
       {/* 6. Mission */}
-      <section className="bg-bronze-100 py-16 md:py-24">
-        <div className="container-x grid items-end gap-8 md:grid-cols-2">
-          <p className="text-4xl font-extrabold leading-snug text-navy-900 sm:text-5xl lg:text-6xl">ما کیفیت را می‌سازیم</p>
-          <div>
-            <p className="max-w-lg text-lg text-navy-900/80">
-              با تخصص، علم و فن‌آوری به‌روز، خواسته‌های کارخانجات و شرکت‌ها را برآورده می‌کنیم تا مصرف‌کنندگان به کالاهای صنعتی با بالاترین کیفیت دست پیدا کنند.
-            </p>
-            <Button href="/about" className="mt-6 w-full sm:w-auto">درباره‌ی ما</Button>
-          </div>
-        </div>
-      </section>
-
+     
       {/* 7. Quality documents (replaces the plain certificate list on the homepage only) */}
       <QualityDocuments />
 

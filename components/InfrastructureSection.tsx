@@ -8,23 +8,20 @@ export type InfrastructurePhoto = {
   alt: string;
   caption?: string;
 };
-
-/* Photos are 400x550: the layout never shows them wider than ~400px so they stay sharp.
-   Swap in real, larger photos of the plant and raise the max widths below. */
 const defaultPhotos: [InfrastructurePhoto, InfrastructurePhoto] = [
   {
-    src: "/images/infrastructure/infrastructure-1.jpg",
-    width: 400,
-    height: 550,
-    alt: "نمای سیاه‌وسفید از تجهیزات صنعتی در یک سالن",
-    caption: "تصویر ۱",
+    src: "/brand/infrastructure-1.png",
+    width: 859,
+    height: 516,
+    alt: "اپراتور در حال کار با دستگاه صنعتی در محیط تولید",
+    caption: "فرآیند تولید صنعتی",
   },
   {
-    src: "/images/infrastructure/infrastructure-2.jpg",
-    width: 400,
-    height: 550,
-    alt: "لوله‌ها و مخزن فولادی در یک فضای صنعتی",
-    caption: "تصویر ۲",
+    src: "/brand/infrastructure-2.png",
+    width: 822,
+    height: 464,
+    alt: "نمای داخلی سالن تولید و تجهیزات صنعتی",
+    caption: "فضای تولید",
   },
 ];
 
@@ -67,7 +64,7 @@ export default function InfrastructureSection({
                 height={main.height}
                 alt={main.alt}
                 sizes="(min-width: 1024px) 25rem, 72vw"
-                className="block h-auto w-full border border-ivory/15 grayscale"
+                className="block h-auto w-full border border-ivory/15"
               />
               {main.caption && <figcaption className="mt-3 text-end text-sm text-navy-100">{main.caption}</figcaption>}
             </figure>
@@ -80,7 +77,7 @@ export default function InfrastructureSection({
                 height={second.height}
                 alt={second.alt}
                 sizes="(min-width: 1024px) 16rem, 46vw"
-                className="block h-auto w-full border-[6px] border-navy-900 grayscale outline outline-1 outline-ivory/15"
+                className="block h-auto w-full border-[6px] border-navy-900 outline outline-1 outline-ivory/15"
               />
               {second.caption && <figcaption className="mt-3 text-sm text-navy-100">{second.caption}</figcaption>}
             </figure>
