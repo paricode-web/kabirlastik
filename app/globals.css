@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+/* Brand tokens: from Figma page "03 Colors" */
+@theme {
+  --color-navy-900: #0f2438;
+  --color-navy-700: #1f3d5a;
+  --color-navy-500: #3e6489;
+  --color-navy-100: #d9e1ea;
+  --color-bronze-600: #8a6340;
+  --color-bronze-500: #a87b4f;
+  --color-bronze-300: #c79b6b;
+  --color-bronze-100: #ebdccb;
+  --color-ivory: #f5f3ee;
+  --color-stone: #e6e2da;
+  --color-graphite: #1e252b;
+  --color-steel-500: #8a9199;
+  --color-success: #2e7d5b;
+  --color-warning: #c98a1b;
+  --color-error: #b33a2f;
+  --color-info: #3e6489;
+}
+
+@theme inline {
+  --font-sans: var(--font-vazir), ui-sans-serif, system-ui, sans-serif;
+}
+
+@utility container-x {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 80rem;
+  padding-inline: 1.25rem;
+  @media (min-width: 1024px) {
+    padding-inline: 4rem;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+  }
+  body {
+    background: var(--color-ivory);
+    color: var(--color-graphite);
+    font-family: var(--font-sans);
+    line-height: 1.9;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 {
+    color: var(--color-navy-900);
+    font-weight: 800;
+    line-height: 1.4;
+  }
+  h1 { font-size: clamp(2rem, 4.5vw, 3.5rem); }
+  h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); }
+  h3 { font-size: 1.25rem; }
+  :focus-visible {
+    outline: 2px solid var(--color-bronze-500);
+    outline-offset: 3px;
+  }
+  ::selection {
+    background: var(--color-bronze-100);
+    color: var(--color-navy-900);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition-duration: 0.01ms !important; }
+  }
+}
+
+/* ---- Motion: used in only three places (hero drawing, marquee, count-up) ---- */
+@keyframes gasket-draw { to { stroke-dashoffset: 0; } }
+@keyframes gasket-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes marquee { to { transform: translateX(50%); } }
+
+.gasket-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: gasket-draw 2.4s cubic-bezier(0.65, 0, 0.35, 1) 0.2s forwards;
+}
+.gasket-fade { opacity: 0; animation: gasket-fade 0.6s ease 2.2s forwards; }
+
+.marquee-track { animation: marquee 45s linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .gasket-draw { stroke-dashoffset: 0; animation: none; }
+  .gasket-fade { opacity: 1; animation: none; }
+  .marquee-track { animation: none; }
+}
