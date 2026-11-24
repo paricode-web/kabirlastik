@@ -12,7 +12,7 @@ export default function Footer() {
     <footer className="bg-navy-900 text-navy-100">
       <div className="container-x grid gap-10 py-12 sm:grid-cols-2 sm:gap-12 md:py-16 lg:grid-cols-4">
         <div className="lg:pe-6">
-          <Logo variant="dark" className="h-14 md:h-20" />
+          <Logo tone="dark" size="lg" />
           <p className="mt-5 text-sm leading-8">
             تولید و تأمین قطعات لاستیکی برای صنایع گوناگون، از سال {site.since}.
           </p>
