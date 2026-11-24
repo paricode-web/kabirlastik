@@ -21,7 +21,7 @@
 }
 
 @theme inline {
-  --font-sans: var(--font-vazir), ui-sans-serif, system-ui, sans-serif;
+ --font-sans: var(--font-estedad), ui-sans-serif, system-ui, sans-serif;
 }
 
 @utility container-x {
