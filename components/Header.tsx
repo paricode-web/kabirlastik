@@ -29,9 +29,9 @@ export default function Header() {
           ))}
         </nav>
 
-        <Button href="/contact" className="hidden lg:inline-flex">
-          درخواست مشاوره
-        </Button>
+        <div className="hidden lg:block">
+          <Button href="/contact">درخواست مشاوره</Button>
+        </div>
 
         <button
           type="button"
